@@ -1,6 +1,4 @@
 "use client"
-// import Image from "next/image";
-// import styles from "./page.module.css";
 import React from "react";
 
 export default function Home() {
@@ -8,7 +6,12 @@ export default function Home() {
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     console.log({ value })
-    URL.canParse(value) ? setCanUrlParse(true) : setCanUrlParse(false);
+
+    if (URL.canParse(value)) {
+      setCanUrlParse(true);
+    } else {
+      setCanUrlParse(false);
+    }
 
     try {
       fetch(value).then((result) => {
