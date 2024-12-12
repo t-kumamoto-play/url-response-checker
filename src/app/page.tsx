@@ -2,26 +2,24 @@
 import React from "react";
 
 export default function Home() {
-  const [canUrlParse, setCanUrlParse] = React.useState<boolean>(false);
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  // const load = async (_url: string) => {
+  //   var xhr;
+  //   xhr = new XMLHttpRequest();
+  //   xhr.open("HEAD", _url, false);
+  //   xhr.send(null);
+  //   return xhr;
+  // }
+  const onChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    console.log({ value })
+    // const res = await load(value);
+    // console.log({ res })
 
-    if (URL.canParse(value)) {
-      setCanUrlParse(true);
-    } else {
-      setCanUrlParse(false);
-    }
+    fetch(value, { mode: "cors" }).then((res) => {
+      console.log({ res });
+    }).catch((e) => {
+      console.error("Error:", e);
+    });
 
-    try {
-      fetch(value).then((result) => {
-        console.log({ result })
-      }).catch((err) => {
-        console.error(err)
-      })
-    } catch (e) {
-      console.error(e)
-    }
   };
   return (
     <div>
@@ -29,7 +27,6 @@ export default function Home() {
       <input onChange={onChange} type="text" />
 
       <ul>
-        <li>URLとして適切か？：{canUrlParse ? "はい" : "いいえ"}</li>
       </ul>
     </div>
   );
