@@ -1,3 +1,10 @@
+# URLのスクレイピング用コード
+
+フォームにURLを貼り付けて判定する。
+
+![画面収録 2024-12-23 10 30 14](https://github.com/user-attachments/assets/e6814b54-c471-45dc-bee4-57c4378ffbb2)
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
